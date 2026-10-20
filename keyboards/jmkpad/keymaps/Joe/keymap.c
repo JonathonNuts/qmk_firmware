@@ -17,6 +17,12 @@ enum number_to_string{
     NUM_20
 };
 
+enum layers {
+    _BASE,
+    _RGB
+};
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * ┌───┬───┬───┬───┐
@@ -29,12 +35,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │ 0 │ . │Ent│ + │
      * └───┴───┴───┴───┘
      */
-    [0] = LAYOUT(
+    [_BASE] = LAYOUT(
         KC_P1,   KC_P2,   KC_P3,   KC_P4,
         KC_P5,   KC_P6,   KC_P7,   KC_P8, 
         KC_P9,   NUM_10,   NUM_11,   NUM_12, 
         NUM_13,   NUM_14, NUM_15, NUM_16, 
-        NUM_17,   NUM_18, NUM_19, NUM_20 
+        NUM_17,   NUM_18, NUM_19, MO(_RGB) 
+    ),
+
+    [_RGB] = LAYOUT(
+        RM_HUEU, RM_HUED, RM_SATU, RM_SATD,
+        RM_VALU, RM_VALD, RM_SPDU, RM_SPDD,
+        RM_NEXT, RM_PREV, RM_TOGG, RM_ON,
+        _______, _______, _______, _______,
+        QK_BOOT, _______, _______, _______
     )
 };
 
